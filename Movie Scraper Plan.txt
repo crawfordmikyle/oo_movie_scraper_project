@@ -1,0 +1,15 @@
+Movie Scraper Plan
+
+:: What Do I Want It To Do ::
+--- Work Via CLI
+--- Scrape Fandago Based on City, State 
+--- Return Movies Playing and Show Times
+--- Have The Capacity To Return More Info A Movie On Request
+
+:: Plan Of Attack ::
+1) Make the gem with bundler
+2) Make The Basic CLI with static data
+3) Find a way to generate the correct URL to scrape based on city and state
+3) Sort out where the data I want is
+4) Make the scraper
+5) Put it all together	

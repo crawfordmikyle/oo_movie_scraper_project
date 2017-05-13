@@ -1,5 +1,11 @@
 require "movie_scraper/version"
 
 module MovieScraper
-  # Your code goes here...
+  def movie_list
+  	puts "lorem"
+  end
+
+  def movie_info
+  	puts "lorem"
+  end 
 end
