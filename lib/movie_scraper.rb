@@ -1,11 +1,12 @@
 require "movie_scraper/version"
-
-module MovieScraper
-  def movie_list
-  	puts "lorem"
+require_relative "scraper"
+class Movie_Scraper
+  def self.movie_list
+  	puts Scraper.data_arr
   end
 
   def movie_info
   	puts "lorem"
-  end 
+  end
+
 end
