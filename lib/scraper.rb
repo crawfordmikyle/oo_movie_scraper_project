@@ -1,9 +1,15 @@
+require 'nokogiri'
+require 'open-uri'
 class Scraper
 
-def self.data_arr
-@data_arr = [{title: "somthing1", rating: "5stars"},{title: "somthing2", rating: "5stars"},{title: "somthing3", rating: "5stars"}]
-@data_arr
-end
+def movie_list_scraper(fandango_link)
+	@movies = []
+	source = Nokogiri::HTML(open('fandango_link'))
+	source.css('a.showtimes-movie-title').each do |movie|
+		@movies << movie.text.strip
+	end 
+	@movies
+end 
 
 
 
