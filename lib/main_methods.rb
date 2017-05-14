@@ -11,8 +11,8 @@ class Main_methods
   end
 
   def self.fandago_link_maker(city="Berkeley",state="CA")
-  	city = city
-  	state = state
+  	city = city.downcase
+  	state = state.downcase
   	city_length =  city.split.size
   	if city_length == 1
   		@fandago_link = "http://www.fandango.com/#{city}_#{state}_movietimes"
