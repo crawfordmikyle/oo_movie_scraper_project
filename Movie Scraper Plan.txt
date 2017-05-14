@@ -10,6 +10,7 @@ Movie Scraper Plan
 1) Make the gem with bundler
 2) Make The Basic CLI with static data
 3) Find a way to generate the correct URL to scrape based on city and state
+** Make Objects for the locations and movies
 3) Sort out where the data I want is
 4) Make the scraper
 5) Put it all together	
