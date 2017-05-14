@@ -31,10 +31,12 @@ class Main_methods
   end
 
   def temp_data
-    # What I want to return 
-    # Movie Title
-    #  locations 
-    #    showtimes 
-
-
+    "movie 1" "location1"
+                 "time1"
+                 "time2"
+              "location2"
+                 "time1"
+                 "time2"
+        hash = {title: name locations:{location: name showtimes:["time1","time2"]}}
+  end 
 end
