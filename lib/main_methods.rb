@@ -21,14 +21,20 @@ class Main_methods
   	elsif city_length == 3
   		@fandango_link = "http://www.fandango.com/#{city.split[0]}+#{city.split[1]}+#{city.split[2]}_#{state}_movietimes"
   	elsif city_length == 4
-      @fandango_link = "http://fandango"
+      @fandango_link = "http://www.fandango.com/#{city.split[0]}+#{city.split[1]}+#{city.split[2]}+#{city.split[3]}_#{state}_movietimes"
     elsif city_length == 5
-      @fandango_link = ""
+      @fandango_link = "http://www.fandango.com/#{city.split[0]}+#{city.split[1]}+#{city.split[2]}+#{city.split[3]}+#{city.split[4]}_#{state}_movietimes"
     else 
   		puts "Woops I cant find that city"
   		exit!
   	end 
   end
+
+  def temp_data
+    # What I want to return 
+    # Movie Title
+    #  locations 
+    #    showtimes 
 
 
 end
