@@ -1,7 +1,8 @@
 #!/usr/bin/env ruby
-
+require 'pry'
 require "bundler/setup"
 require "movie_scraper"
+
 
 #start of program
 puts "Welcome To Gems Movie Showtimes"
@@ -9,10 +10,10 @@ puts "Please Enter Your city"
 city = gets.chomp
 puts "Awesome Now Enter Your States two letter code"
 state = gets.chomp.upcase
-
 link = Main_methods.fandango_link_maker(city,state)
-puts link
-
+#binding.pry
+movies = Scraper.movie_list_scraper(link)
+puts movies
 # You can add fixtures and/or initialization code here to make experimenting
 # with your gem easier. You can also use a different console, if you like.
 
