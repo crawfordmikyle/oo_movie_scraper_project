@@ -10,17 +10,21 @@ class Main_methods
   	data_array.each {|entry| puts entry[:rating]}
   end
 
-  def self.fandago_link_maker(city="Berkeley",state="CA")
+  def self.fandango_link_maker(city="Berkeley",state="CA")
   	city = city.downcase
   	state = state.downcase
   	city_length =  city.split.size
   	if city_length == 1
-  		@fandago_link = "http://www.fandango.com/#{city}_#{state}_movietimes"
- 	elsif city_length == 2
- 		@fandago_link = "http://www.fandango.com/#{city.split[0]}+#{city.split[1]}_#{state}_movietimes"
+  		@fandango_link = "http://www.fandango.com/#{city}_#{state}_movietimes"
+ 	  elsif city_length == 2
+ 		@fandango_link = "http://www.fandango.com/#{city.split[0]}+#{city.split[1]}_#{state}_movietimes"
   	elsif city_length == 3
-  		@fandago_link = "http://www.fandango.com/#{city.split[0]}+#{city.split[1]}+#{city.split[2]}_#{state}_movietimes"
-  	else 
+  		@fandango_link = "http://www.fandango.com/#{city.split[0]}+#{city.split[1]}+#{city.split[2]}_#{state}_movietimes"
+  	elsif city_length == 4
+      @fandango_link = "http://fandango"
+    elsif city_length == 5
+      @fandango_link = ""
+    else 
   		puts "Woops I cant find that city"
   		exit!
   	end 

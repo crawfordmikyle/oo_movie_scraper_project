@@ -10,7 +10,7 @@ city = gets.chomp
 puts "Awesome Now Enter Your States two letter code"
 state = gets.chomp.upcase
 
-link = Main_methods.fandago_link_maker(city,state)
+link = Main_methods.fandango_link_maker(city,state)
 puts link
 
 # You can add fixtures and/or initialization code here to make experimenting
