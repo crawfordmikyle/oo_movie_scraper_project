@@ -10,23 +10,15 @@ class Main_methods
   	data_array.each {|entry| puts entry[:rating]}
   end
 
-  def self.fandango_link_maker(city="Berkeley",state="CA")
-  	city = city.downcase
-  	state = state.downcase
-  	city_length =  city.split.size
-  	if city_length == 1
-  		@fandango_link = "http://www.fandango.com/#{city}_#{state}_movietimes"
- 	  elsif city_length == 2
- 		@fandango_link = "http://www.fandango.com/#{city.split[0]}+#{city.split[1]}_#{state}_movietimes"
-  	elsif city_length == 3
-  		@fandango_link = "http://www.fandango.com/#{city.split[0]}+#{city.split[1]}+#{city.split[2]}_#{state}_movietimes"
-  	elsif city_length == 4
-      @fandango_link = "http://www.fandango.com/#{city.split[0]}+#{city.split[1]}+#{city.split[2]}+#{city.split[3]}_#{state}_movietimes"
-    elsif city_length == 5
-      @fandango_link = "http://www.fandango.com/#{city.split[0]}+#{city.split[1]}+#{city.split[2]}+#{city.split[3]}+#{city.split[4]}_#{state}_movietimes"
-    else 
-  		puts "Woops I cant find that city"
-  		exit!
-  	end 
-  end
+  def get_location
+    puts "Welcome To Gems Movie Showtimes"
+    puts "Please Enter Your city"
+    @city = gets.chomp
+    puts "Awesome Now Enter Your States two letter code"
+    @state = gets.chomp.upcase
+    @link = Main_methods.fandango_link_maker(city,state)
+    movies = Scraper.movie_list_scraper(link)
+    puts movies
+  end 
+
 end
