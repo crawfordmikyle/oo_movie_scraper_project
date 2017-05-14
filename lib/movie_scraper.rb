@@ -10,4 +10,16 @@ class Movie_Scraper
   	data_array.each {|entry| puts entry[:rating]}
   end
 
+  def fandago_link_maker(city="Berkeley",state="CA")
+  	city = city
+  	state = state
+  	city_length =  city.split.size
+  	if city_length = 1
+  		@fandago_link = "http://www.fandango.com/#{city}_#{state}_movietimes"
+ 	elsif city_length = 2
+ 		@fandago_link = "http://www.fandango.com/#{city.split[0]}+#{city.split[1]}_#{state}_movietimes"
+  		
+  end
+
+
 end
