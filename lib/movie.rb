@@ -10,4 +10,8 @@ def self.all
 	@@all
 end 
 
+def make_from_arr
+
+end 
+
 end 
