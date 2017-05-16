@@ -34,8 +34,7 @@ def self.fandango_link_maker(city="Berkeley",state="CA")
 
   def self.movie_list_scraper(fandango_link)
     @movies = []
-    @source = Nokogiri::HTML(open(fandango_link))
-    source.css('a.showtimes-movie-title').each do |movie|
+    @source.css('a.showtimes-movie-title').each do |movie|
       @movies << movie.text.strip
 
     end 
@@ -43,12 +42,17 @@ def self.fandango_link_maker(city="Berkeley",state="CA")
   end 
 
   def self.data_scraper(fandango_link)
-    @movie_data_arr = []
-    source.css('div.showtimes-movie-container').each do |movie|
-    movie_data = {}
-    movie_data[:title] = movie.css('a.showtimes-movie-title').text.strip    
-    movie_data[:showtimes] = movie.css('a.btn').text.strip || movie_data[:showtimes] = movie.css('time.non-ticketing').text.strip
-    movie_data_arr << movie_data 
+    @movie_data_hash = {}
+    @source.css('div.showtimes-theater').each do |theater|
+      th_name = theater.css('a.showtimes-theater-title').text.stip
+      @movie_data_hash.store(th_name, {})
+        theater.css('div.showtimes-movie-container').each do |movie|
+          movie_data = {}
+          movie_data[:title] = movie.css('a.showtimes-movie-title').text.strip    
+          movie_data[:showtimes] = movie.css('a.btn').text.strip || movie_data[:showtimes] = movie.css('time.non-ticketing').text.strip
+          movie_data_hash.send("#{th_name}=", movie_data)
+        end 
+      end  
     end
 
   end 
