@@ -10,8 +10,8 @@ def self.all
 	@@all
 end 
 
-def make_from_arr
-
+def self.make_from_arr
+	@@all.each do
 end 
 
 end 

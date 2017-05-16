@@ -23,3 +23,9 @@ Bin
 —- movie_scraper #main file
 —- movie #movie object
 —- location #location object
+
+
+movie scraper has many locations
+Locations have many movies and showtimes
+
+	
