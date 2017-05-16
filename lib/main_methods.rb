@@ -11,14 +11,15 @@ class Main_methods
   	data_array.each {|entry| puts entry[:rating]}
   end
 
-  def self.get_location
+  def self.get_movies
     puts "Welcome To Gems Movie Showtimes"
     puts "Please Enter Your city"
     @city = gets.chomp
     puts "Awesome Now Enter Your States two letter code"
     @state = gets.chomp.upcase
     @link = Scraper.fandango_link_maker(@city,@state)
-    @movies = Scraper.movie_list_scraper(@link)
+    @movies_data = Scraper.data_scraper(@link)
+    puts @movies_data
   end 
 
   def make_movies

@@ -6,6 +6,6 @@ require_relative "location"
 
 class Movie_scraper
 	def initialize
-		get_movies
+		Main_methods.get_movies
 	end 
 end
