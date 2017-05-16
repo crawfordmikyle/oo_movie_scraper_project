@@ -4,11 +4,8 @@ require_relative "Main_methods"
 require_relative "movie"
 require_relative "location"
 
-class self.Movie_scraper
-	attr_accessor :movies
-	def get_movies
-		@movies = Movie.all
-		binding.pry
-		puts @movies
+class Movie_scraper
+	def initialize
+		get_movies
 	end 
 end
