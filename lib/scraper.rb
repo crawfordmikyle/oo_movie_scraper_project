@@ -49,12 +49,9 @@ def self.fandango_link_maker(city="Berkeley",state="CA")
       movie_data_hash[:"#{th_name}"] = {}
         theater.css('div.showtimes-movie-container').each do |movie|
           movie_data = {}
-          movie_data[:title] = movie.css('a.showtimes-movie-title').text.strip
-          movie_data[:showtimes] = []
-          movie.css('a.btn').each {|time| movie_data[:showtimes] << time.text.strip }
-          movie.css('time.non-ticketing').each {|time| movie_data[:showtimes] << time.text.strip }    
-              #movie_data[:showtimes] = "#{movie.css('a.btn').text.strip} " || movie_data[:showtimes] = "#{movie.css('time.non-ticketing').text.strip} "
-              #movie_data_hash[:"#{th_name}"][:"#{movie_data[:title]}"] = movie_data
+          movie_data[:title] = movie.css('a.showtimes-movie-title').text.strip   
+          movie_data[:showtimes] = movie.css('a.btn').text.strip.split("m") || movie_data[:showtimes] = movie.css('time.non-ticketing').text.strip.split("m")
+          movie_data_hash[:"#{th_name}"][:"#{movie_data[:title]}"] = movie_data
         end 
       end  
         puts movie_data_hash
