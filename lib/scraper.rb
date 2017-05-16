@@ -2,16 +2,7 @@ require 'nokogiri'
 require 'open-uri'
 class Scraper
 
-def self.movie_list_scraper(fandango_link)
-	@movies = []
-	source = Nokogiri::HTML(open(fandango_link))
-	source.css('a.showtimes-movie-title').each do |movie|
-		@movies << movie.text.strip
-	end 
-	@movies
-end 
-
-  def self.fandango_link_maker(city="Berkeley",state="CA")
+def self.fandango_link_maker(city="Berkeley",state="CA")
   	city = city.downcase
   	state = state.downcase
   	city_length =  city.split.size
@@ -30,6 +21,25 @@ end
   		exit!
   	end 
   end
+
+  def self.locations_list_scraper(fandango_link)
+    @locations = []
+    @source = Nokogiri::HTML(open(fandango_link))
+      source.css('a.showtimes-theater-title').each do |th|
+      @locations << th.text.strip.squeeze(" ")
+    end
+  end
+
+
+
+  def self.movie_list_scraper(fandango_link)
+    @movies = []
+    @source = Nokogiri::HTML(open(fandango_link))
+    source.css('a.showtimes-movie-title').each do |movie|
+      @movies << movie.text.strip
+    end 
+    @movies
+  end 
 
 
 

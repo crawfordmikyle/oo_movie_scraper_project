@@ -1,5 +1,5 @@
 class Movie
-attr_accessor :name, :locations, :showtimes 
+attr_accessor :name
 @@all = []
 def initalize(name)
 	@name = name
@@ -11,7 +11,9 @@ def self.all
 end 
 
 def self.make_from_arr
-	@@all.each do
+	@@all.each do |movie|
+		movie = Movie.new(movie)
+	end 
 end 
 
 end 
