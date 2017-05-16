@@ -22,25 +22,6 @@ def self.fandango_link_maker(city="Berkeley",state="CA")
   	end 
   end
 
-  def self.locations_list_scraper(fandango_link)
-    @locations = []
-    @source = Nokogiri::HTML(open(fandango_link))
-      source.css('a.showtimes-theater-title').each do |th|
-      @locations << th.text.strip.squeeze(" ")
-    end
-  end
-
-
-
-  def self.movie_list_scraper(fandango_link)
-    @movies = []
-    @source.css('a.showtimes-movie-title').each do |movie|
-      @movies << movie.text.strip
-
-    end 
-    @movies
-  end 
-
   def self.data_scraper(fandango_link)
     movie_data_hash = {}
     source = Nokogiri::HTML(open(fandango_link))
