@@ -1,7 +1,7 @@
 class Movie
-attr_accessor :name, :reviews, :rating, :location
+attr_accessor :name, :reviews, :rating, :location, :showtimes
 @@all = []
-def initalize(name,showtimes)
+def initialize(name,showtimes)
 	@name = name
 	@showtimes = showtimes
  	@@all << self
