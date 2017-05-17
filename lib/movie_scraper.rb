@@ -9,8 +9,12 @@ class Movie_scraper
 	def initialize
 		@main_data_hash = Main_methods.get_movies
 		@main_data_hash.each do |location|
-			binding.pry
-			location = Location.new(location)
-		end
-	end 
+			theater = Location.new(location.first)
+				location.each do |movie|
+					Location.all.each do |place|
+						place.add_movies_from_hash(movie)
+					end
+				end 
+		end 
+	end	
 end

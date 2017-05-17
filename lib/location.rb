@@ -11,12 +11,8 @@ def initialize(name)
 	@@all << self	
 end 
 
-def add_movie(movie,showtimes)
-
-end 
-
-def add_address
-
+def add_movies_from_hash(hash)
+	@movies = hash
 end 
 
 end 
