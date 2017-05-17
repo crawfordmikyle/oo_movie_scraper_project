@@ -26,13 +26,7 @@ class Movie_scraper
 				end 
 			end 
 		end
-		list_results
-	end 
-
-	def list_results
-		Movie.all.each do |movie|
-			binding.pry
-			puts movie.name
-		end 
-	end 
+		Main_methods.list_results
+		Main_methods.show_movie		
+	end  
 end

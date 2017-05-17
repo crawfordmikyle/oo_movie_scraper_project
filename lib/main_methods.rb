@@ -22,4 +22,23 @@ class Main_methods
     @movies_data = Scraper.data_scraper(@link)
     @movies_data
   end 
+
+  def self.list_results
+    @movie_list = []
+    Movie.all.each do |movie|
+      puts movie.name
+      @movie_list << movie.name
+    end 
+  end
+
+  def self.show_movie
+    puts "look up a movie by name"
+    input = gets.chomp
+    Movie.all.each do |movie|
+      binding.pry
+      if movie.name == input
+        movie
+      end 
+    end
+  end 
 end
