@@ -1,5 +1,5 @@
 class Movie
-attr_accessor :name, :reviews, :rating
+attr_accessor :name, :reviews, :rating, :location
 @@all = []
 def initalize(name,showtimes)
 	@name = name

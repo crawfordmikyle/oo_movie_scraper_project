@@ -6,15 +6,17 @@ require_relative "location"
 
 class Movie_scraper
 	attr_accessor :main_data_hash
+	@@location = []
 	def initialize
 		@main_data_hash = Main_methods.get_movies
-		@main_data_hash.each do |location|
-			theater = Location.new(location.first)
-				location.each do |movie|
-					Location.all.each do |place|
-						place.add_movies_from_hash(movie)
-					end
-				end 
-		end 
-	end	
+		@main_data_hash.each_pair do |theater,movies_hash|
+			Location.new(theater,movies_hash)
+		end
+		binding.pry
+	end 
+
+
+	def self.locations
+		@@location
+	end
 end

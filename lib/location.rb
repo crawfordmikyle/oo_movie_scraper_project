@@ -6,13 +6,15 @@ def self.all
 	@@all
 end 
 
-def initialize(name)
+def initialize(name,movies_hash)
 	@name = name
+	@movies_hash = movies_hash
 	@@all << self	
 end 
 
 def add_movies_from_hash(hash)
-	@movies = hash
+	@movies_hash = hash
+	binding.pry
 end 
 
 end 
