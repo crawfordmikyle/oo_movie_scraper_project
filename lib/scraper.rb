@@ -41,4 +41,6 @@ def self.fandango_link_maker(city="Berkeley",state="CA")
       movie_data_hash
     end
 
+  #def rating_scraper()
+  #end   
   end 
