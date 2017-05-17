@@ -38,7 +38,7 @@ def self.fandango_link_maker(city="Berkeley",state="CA")
           movie_data_hash[:"#{th_name}"][:"#{movie_data[:title]}"] = movie_data
         end 
       end  
-        puts movie_data_hash
+      movie_data_hash
     end
 
   end 

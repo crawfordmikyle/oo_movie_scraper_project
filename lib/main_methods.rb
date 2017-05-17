@@ -1,6 +1,7 @@
 require "movie_scraper/version"
 require_relative "scraper"
 class Main_methods
+  attr_reader :movies_data
 
   def self.movie_list
   	data_array = Scraper.data_arr
@@ -19,13 +20,6 @@ class Main_methods
     @state = gets.chomp.upcase
     @link = Scraper.fandango_link_maker(@city,@state)
     @movies_data = Scraper.data_scraper(@link)
-    puts @movies_data
+    @movies_data
   end 
-
-  def make_movies
-    @movies.each do |movie|
-      movie = Movie.new(movie)
-    end
-  end 
-
 end

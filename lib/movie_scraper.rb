@@ -5,7 +5,12 @@ require_relative "movie"
 require_relative "location"
 
 class Movie_scraper
+	attr_accessor :main_data_hash
 	def initialize
-		Main_methods.get_movies
+		@main_data_hash = Main_methods.get_movies
+		@main_data_hash.each do |location|
+			binding.pry
+			location = Location.new(location)
+		end
 	end 
 end
