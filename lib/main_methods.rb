@@ -35,9 +35,9 @@ class Main_methods
     puts "look up a movie by name"
     input = gets.chomp
     Movie.all.each do |movie|
-      binding.pry
-      if movie.name == input
-        movie
+      if movie.name.to_s == input
+        puts movie.name
+        puts movie.locations
       end 
     end
   end 
