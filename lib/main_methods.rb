@@ -8,9 +8,6 @@ class Main_methods
   	data_array.each {|entry| puts entry[:title]} 
   end
 
-  def self.movie_info(title)
-  	data_array.each {|entry| puts entry[:rating]}
-  end
 
   def self.get_movies
     puts "Welcome To Gems Movie Showtimes"
@@ -23,6 +20,29 @@ class Main_methods
     @movies_data
   end 
 
+  def self.make_movies
+  @main_data_hash = get_movies
+    @main_data_hash.each_pair do |theater,movies_hash|
+      @location = [] << theater
+      @main_data_hash[theater].each_pair do |movie, showtimes|
+        @title = movie
+        @showtimes = showtimes[:showtimes]
+          if Movie.all.any? {|m|m.name == movie}
+              Movie.all.each do |m|
+                if m.name == movie 
+                  location_hash = {@location => showtimes[:showtimes]}
+                  m.add_location(location_hash)
+                end   
+              end 
+           end       
+          movie = Movie.new(@title,@showtimes,@location)
+      end 
+    end
+  end 
+
+
+  
+
   def self.list_results
     @movie_list = []
     Movie.all.each do |movie|
@@ -32,13 +52,42 @@ class Main_methods
   end
 
   def self.show_movie
-    puts "look up a movie by name"
-    input = gets.chomp
     Movie.all.each do |movie|
-      if movie.name.to_s == input
-        puts movie.name
-        puts movie.locations
+      if movie.name.to_s == @input
+        puts movie.name.to_s
+        movie.locations.each_pair do |l,t|
+        puts l.to_s
+        puts t.to_s
       end 
+      end 
+    end 
+  end 
+
+  def self.check_input
+    if @input == "exit"
+      exit!
+    elsif Movie.all.any?{|movie| movie.name.to_s == @input}
+      true
+    else
+      false
     end
   end 
-end
+
+  def self.movie_info
+    puts "Look Up Movie By name or type exit"
+    @input = gets.chomp
+    if check_input == true
+      show_movie
+      puts "look up another? yes or no"
+      @input = gets.chomp
+        if @input == "yes"
+          movie_info
+        else  
+          exit!
+        end 
+    else check_input == false
+      puts "woops cant find that"
+      movie_info
+    end 
+  end 
+end 

@@ -1,10 +1,9 @@
 class Movie
 attr_accessor :name, :reviews, :rating, :locations
 @@all = []
-def initialize(name,showtimes,location)
+def initialize(name,showtimes,showing_data)
 	@name = name
-	@locations = {}
-	@locations[location] = showtimes
+	@locations = showing_data
  	@@all << self
 end 
 
