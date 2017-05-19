@@ -1,9 +1,9 @@
 class Movie
-attr_accessor :name, :reviews, :rating, :locations
+attr_accessor :name, :showtimes
 @@all = []
-def initialize(name,showtimes,showing_data)
+def initialize(name,showtimes,location)
 	@name = name
-	@locations = showing_data
+	@showtimes = {location => showtimes}
  	@@all << self
 end 
 
@@ -12,7 +12,7 @@ def self.all
 end 
 
 def add_location(locations_hash)
-	@locations.merge!(locations_hash)
+	@showtimes.merge!(locations_hash)
 end 
 
 end
