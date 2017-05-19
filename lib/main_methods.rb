@@ -39,6 +39,7 @@ class Main_methods
           movie = Movie.new(@title,@showtimes,@tname)
       end 
     end
+    check_location
   end 
 
 
@@ -91,6 +92,14 @@ class Main_methods
     else check_input == false
       puts "woops cant find that"
       movie_info
+    end 
+  end 
+
+  def self.check_location
+    if Movie.all == []
+      system("clear")
+      puts "Oh No! I Can't Find That"
+      eixt!
     end 
   end 
 end 

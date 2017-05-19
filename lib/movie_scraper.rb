@@ -5,7 +5,6 @@ require_relative "movie"
 
 class Movie_scraper
 	attr_accessor :main_data_hash
-	@@tnames = []
 	def initialize
 		system("clear")
 		Main_methods.make_movies
