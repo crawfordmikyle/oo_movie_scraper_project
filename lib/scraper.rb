@@ -9,13 +9,13 @@ def self.fandango_link_maker(city="Berkeley",state="CA")
   	if city_length == 1
   		@fandango_link = "http://www.fandango.com/#{city[0].downcase}_#{state}_movietimes"
  	  elsif city_length == 2
- 		@fandango_link = "http://www.fandango.com/#{city.split[0].downcase}+#{city.split[1].downcase}_#{state}_movietimes"
+ 		@fandango_link = "http://www.fandango.com/#{city[0].downcase}+#{city[1].downcase}_#{state}_movietimes"
   	elsif city_length == 3
-  		@fandango_link = "http://www.fandango.com/#{city.split[0].downcase}+#{city.split[1].downcase}+#{city.split[2].downcase}_#{state}_movietimes"
+  		@fandango_link = "http://www.fandango.com/#{city[0].downcase}+#{city[1].downcase}+#{city[2].downcase}_#{state}_movietimes"
   	elsif city_length == 4
-      @fandango_link = "http://www.fandango.com/#{city.split[0].downcase}+#{city.split[1].downcase}+#{city.split[2].downcase}+#{city.split[3]}_#{state}_movietimes"
+      @fandango_link = "http://www.fandango.com/#{city[0].downcase}+#{city[1].downcase}+#{city[2].downcase}+#{city[3]}_#{state}_movietimes"
     elsif city_length == 5
-      @fandango_link = "http://www.fandango.com/#{city.split[0].downcase}+#{city.split[1].downcase}+#{city.split[2].downcase}+#{city.split[3]}+#{city.split[4]}_#{state}_movietimes"
+      @fandango_link = "http://www.fandango.com/#{city[0].downcase}+#{city[1].downcase}+#{city[2].downcase}+#{city[3]}+#{city[4]}_#{state}_movietimes"
     else 
   		puts "Woops I cant find that city"
   		exit!
