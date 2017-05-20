@@ -25,7 +25,7 @@ class Main_methods
     @main_data_hash.each_pair do |theater,movies_hash|
       theater_name = [] << theater
       @main_data_hash[theater].each_pair do |movie, showtimes|
-        @tname = theater.to_s.gsub!(/[^0-9A-Za-z]/, '')
+        @tname = theater.to_s
         @title = movie
         @showtimes = showtimes[:showtimes]
           if Movie.all.any? {|m|m.name == movie}
@@ -101,5 +101,15 @@ class Main_methods
       puts "Oh No! I Can't Find That"
       eixt!
     end 
+  end
+
+  def self.make_locations
+    Movie.locations.each do |location|
+      if Location.all.include?(location) == false
+        location = Location.new(location)
+        location.add_movies
+      end 
+    end 
   end 
+       
 end 
