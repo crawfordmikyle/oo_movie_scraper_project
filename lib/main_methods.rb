@@ -132,7 +132,9 @@ class Main_methods
   end 
 
   def self.look_up_another
-    puts "look up another?"
+    puts "\n\n"
+    puts "Press Enter"
+    @input = gets
     list_results
     movie_and_theater_info
   end 
