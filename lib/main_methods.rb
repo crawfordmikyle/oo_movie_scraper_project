@@ -119,7 +119,7 @@ class Main_methods
     if Movie.all == []
       system("clear")
       puts "Oh No! I Can't Find That"
-      get_movies
+      Movie_scraper.new 
     end 
   end
 

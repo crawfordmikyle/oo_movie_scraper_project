@@ -7,7 +7,6 @@ require_relative "location"
 class Movie_scraper
 	attr_accessor :main_data_hash
 	def initialize
-		system("clear")
 		Main_methods.make_movies
 		Main_methods.make_locations
 		Main_methods.list_results
