@@ -76,11 +76,14 @@ class Main_methods
  
 
   def self.show_theater
-    Theaters.all.each do |theater|
-      if theater.name_to_s == @input
+    Location.all.each do |theater|
+      if theater.name.to_s == @input
         system("clear")
         puts theater.name
-        puts theater.movies
+        puts theater.movies.each do |movie|
+          puts movie.name.to_s
+          puts movie.showtimes[:showtimes]
+        end 
       end 
     end 
   end 
