@@ -64,6 +64,7 @@ class Main_methods
 
   def self.show_movie
     Movie.all.each do |movie|
+      binding.pry
       if movie.name.to_s == @input
         system("clear")
         puts movie.name
@@ -73,7 +74,7 @@ class Main_methods
       end 
       end 
     end 
- 
+ end  
 
   def self.show_theater
     Location.all.each do |theater|
@@ -81,13 +82,12 @@ class Main_methods
         system("clear")
         puts theater.name
         puts theater.movies.each do |movie|
+          binding.pry
           puts movie.name.to_s
           puts movie.showtimes[:showtimes]
         end 
       end 
     end 
-  end 
-
   end 
 
   def self.check_input
@@ -101,19 +101,20 @@ class Main_methods
   end 
 
   def self.movie_info
-    puts "Look Up Movie By name or type exit"
+    puts "Search Movie or Location By name or type exit"
     @input = gets.chomp
     if check_input == true
-      show_movie
-      show_theater
-      puts "look up another? yes or no"
-      @input = gets.chomp
-        if @input == "yes"
-          list_results
-          movie_info
-        else  
-          exit!
-        end 
+      if @input == Movie.all.any?{|movie|movie.name.to_s}
+        show_movie
+        puts "look up another?"
+        movie_info
+       
+      else
+        show_theater
+        puts "look up another?"
+        movie_info
+
+      end 
     else check_input == false
       puts "woops cant find that"
       movie_info
