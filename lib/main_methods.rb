@@ -11,31 +11,31 @@ class Main_methods
   def self.get_movies
     puts "Welcome To Gems Movie Showtimes"
     puts "Please Enter Your city"
-    @city = gets.chomp
+    city = gets.chomp
     puts "Awesome Now Enter Your States two letter code"
-    @state = gets.chomp.upcase
-    @link = Scraper.fandango_link_maker(@city,@state)
-    @movies_data = Scraper.data_scraper(@link)
-    @movies_data
+    state = gets.chomp.upcase
+    link = Scraper.fandango_link_maker(city,state)
+    movies_data = Scraper.data_scraper(link)
+    movies_data
   end 
 
   def self.make_movies
-  @main_data_hash = get_movies
-    @main_data_hash.each_pair do |theater,movies_hash|
+  main_data_hash = get_movies
+    main_data_hash.each_pair do |theater,movies_hash|
       theater_name = [] << theater
-      @main_data_hash[theater].each_pair do |movie, showtimes|
-        @tname = theater.to_s
-        @title = movie
-        @showtimes = showtimes[:showtimes]
+      main_data_hash[theater].each_pair do |movie, showtimes|
+        tname = theater.to_s
+        title = movie
+        showtimes = showtimes[:showtimes]
           if Movie.all.any? {|m|m.name == movie}
               Movie.all.each do |m|
                 if m.name == movie
-                  @location_hash = {@tname => @showtimes}
-                  m.add_location(@location_hash)
+                  location_hash = {tname => showtimes}
+                  m.add_location(location_hash)
                 end   
               end 
            end    
-          movie = Movie.new(@title,@showtimes,@tname)
+          movie = Movie.new(title,showtimes,tname)
       end 
     end
     check_location
@@ -43,11 +43,11 @@ class Main_methods
 
   def self.list_results
     system("clear")
-    @movie_list = []
+    movie_list = []
     puts "Movies\n\n"
     Movie.all.each do |movie|
       puts movie.name
-      @movie_list << movie.name
+      movie_list << movie.name
     end 
     puts "\n\n"
     puts "Theaters\n\n"
