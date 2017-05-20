@@ -46,11 +46,20 @@ class Main_methods
   
 
   def self.list_results
+    system("clear")
     @movie_list = []
+    puts "Movies\n\n"
     Movie.all.each do |movie|
       puts movie.name
       @movie_list << movie.name
     end 
+    puts "\n\n"
+    puts "Theaters\n\n"
+    Movie.locations.each do |location|
+      puts location
+    end 
+    puts "\n\n"
+
   end
 
   def self.show_movie
@@ -64,12 +73,24 @@ class Main_methods
       end 
       end 
     end 
+ 
+
+  def self.show_theater
+    Theaters.all.each do |theater|
+      if theater.name_to_s == @input
+        system("clear")
+        puts theater.name
+        puts theater.movies
+      end 
+    end 
+  end 
+
   end 
 
   def self.check_input
     if @input == "exit"
       exit!
-    elsif Movie.all.any?{|movie| movie.name.to_s == @input}
+    elsif Movie.all.any?{|movie| movie.name.to_s == @input} || Location.all.any?{|location| location.name.to_s == @input}
       true
     else
       false
@@ -81,6 +102,7 @@ class Main_methods
     @input = gets.chomp
     if check_input == true
       show_movie
+      show_theater
       puts "look up another? yes or no"
       @input = gets.chomp
         if @input == "yes"
@@ -111,5 +133,5 @@ class Main_methods
       end 
     end 
   end 
-       
+
 end 

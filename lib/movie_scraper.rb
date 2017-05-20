@@ -10,8 +10,7 @@ class Movie_scraper
 		system("clear")
 		Main_methods.make_movies
 		Main_methods.make_locations
-		#Main_methods.list_results
-		#Main_methods.movie_info
-		binding.pry
+		Main_methods.list_results
+		Main_methods.movie_info
 	end  
 end
