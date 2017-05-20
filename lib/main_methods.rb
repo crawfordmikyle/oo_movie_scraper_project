@@ -1,5 +1,6 @@
 require "movie_scraper/version"
 require_relative "scraper"
+
 class Main_methods
   attr_reader :movies_data
 
@@ -10,10 +11,10 @@ class Main_methods
 
   def self.get_movies
     puts "Welcome To Gems Movie Showtimes"
-    puts "Please Enter Your city"
-    city = gets.chomp
-    puts "Awesome Now Enter Your States two letter code"
-    state = gets.chomp.upcase
+    puts "Please Enter Your city and states two letter code"
+    city_state_arr = gets.chomp.split
+    state = city_state_arr.pop
+    city = city_state_arr
     link = Scraper.fandango_link_maker(city,state)
     movies_data = Scraper.data_scraper(link)
     movies_data
@@ -118,7 +119,7 @@ class Main_methods
     if Movie.all == []
       system("clear")
       puts "Oh No! I Can't Find That"
-      eixt!
+      get_movies
     end 
   end
 
