@@ -11,6 +11,6 @@ class Movie_scraper
 		Main_methods.make_movies
 		Main_methods.make_locations
 		Main_methods.list_results
-		Main_methods.movie_info
+		Main_methods.movie_and_theater_info
 	end  
 end
