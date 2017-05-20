@@ -76,15 +76,16 @@ class Main_methods
  end  
 
   def self.show_theater
+    system("clear")
     Location.all.each do |theater|
       if theater.name.to_s == @input
-        system("clear")
-        binding.pry
-        puts theater.name
         theater.movies.each do |movie|
-          binding.pry
           puts movie.name.to_s
-          puts movie.showtimes[:showtimes]
+          movie.showtimes.each_pair do |vin,showtimes|
+            if vin == theater.name.to_s
+            puts showtimes
+            end 
+          end 
         end 
       end 
     end 
@@ -104,13 +105,10 @@ class Main_methods
     puts "Search Movie or Location By name or type exit"
     @input = gets.chomp
     if check_input == true
-      binding.pry
-      if Movie.all.any?{|movie|movie.name.to_s}
-        binding.pry
+      if Movie.all.any?{|movie|movie.name.to_s == @input}
         show_movie
         look_up_another
-      elsif Location.all.any?{|location|location.name.to_s}
-        binding.pry
+      elsif Location.all.any?{|location|location.name.to_s == @input} 
         show_theater
         look_up_another
       end 
@@ -138,15 +136,9 @@ class Main_methods
   end 
 
   def self.look_up_another
-    puts "look up another? yes or no"
-    @input = gets.chomp
-    if @input
-      @input == "yes"
-      list_results
-      movie_and_theater_info
-    else
-      exit!
-    end 
+    puts "look up another?"
+    list_results
+    movie_and_theater_info
   end 
 
 end 
