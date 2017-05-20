@@ -8,7 +8,6 @@ class Main_methods
   	data_array.each {|entry| puts entry[:title]} 
   end
 
-
   def self.get_movies
     puts "Welcome To Gems Movie Showtimes"
     puts "Please Enter Your city"
@@ -41,9 +40,6 @@ class Main_methods
     end
     check_location
   end 
-
-
-  
 
   def self.list_results
     system("clear")
