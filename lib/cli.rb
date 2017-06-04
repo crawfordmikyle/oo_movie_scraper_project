@@ -1,7 +1,7 @@
 require "movie_scraper/version"
 require_relative "scraper"
 
-class Main_methods
+class Cli
   attr_reader :movies_data
 
   def self.movie_list
