@@ -91,10 +91,10 @@ class Cli
     puts "Search Movie or Location By name or type exit"
     @input = gets.chomp
     if check_input == true
-      if Movie.all.any?{|movie|movie.name.to_s == @input}
+      if Movie.find_by_name(@input) != nil
         show_movie
         look_up_another
-      elsif Location.all.any?{|location|location.name.to_s == @input} 
+      elsif Location.find_by_name(@input) != nil
         show_theater
         look_up_another
       end 
