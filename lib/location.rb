@@ -20,4 +20,8 @@ def self.all
 	@@all
 end 
 
+def self.find_by_name(n)
+	Location.all.detect{|movie| movie.name.to_s == n}
+end 
+
 end 

@@ -60,33 +60,22 @@ class Cli
   end
 
   def self.show_movie
-    Movie.all.each do |movie|
-      if movie.name.to_s == @input
-        system("clear")
-        puts movie.name
-        movie.showtimes.each_pair do|l,t|
-        puts l
-        puts t
-      end 
-      end 
+   system("clear")
+   movie = Movie.find_by_name(@input)
+    movie.showtimes.each_pair do |l,s|
+      puts l
+      puts s
     end 
- end  
+  end  
 
   def self.show_theater
-    system("clear")
-    Location.all.each do |theater|
-      if theater.name.to_s == @input
-        theater.movies.each do |movie|
-          puts movie.name.to_s
-          movie.showtimes.each_pair do |vin,showtimes|
-            if vin == theater.name.to_s
-            puts showtimes
-            end 
-          end 
-        end 
-      end 
+   system("clear")
+   theater = Location.find_by_name(@input)
+    theater.movies.each do |movie|
+      puts movie.name
+      puts movie.showtimes[theater.name]
     end 
-  end 
+  end  
 
   def self.check_input
     if @input == "exit"

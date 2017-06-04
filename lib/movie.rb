@@ -19,8 +19,12 @@ def self.locations
 	@@locations
 end 
 
+def self.find_by_name(n)
+	Movie.all.detect{|movie| movie.name.to_s == n}
+end 
+
 def add_location(locations_hash)
 	@showtimes.merge!(locations_hash)
-end 
+end  
 
 end
